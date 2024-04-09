@@ -1,8 +1,8 @@
 {
-  "name": "render-json-server",
+  "name": "propertyHub",
   "version": "1.0.0",
-  "description": "",
-  "main": "sever.js",
+  "description": "single page application for listing houses",
+  "main": "index.js",
   "scripts": {
     "start": "node sever.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-
-  "homepage": "https://github.com/UmaSahni/render-json-server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "json-serve": "^0.1.0",
