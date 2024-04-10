@@ -406,7 +406,7 @@
   
   
   /* filter */
-  .filter-container {
+  /* .filter-container {
     background-color: white;
     padding-bottom: 20px;
   }
@@ -463,12 +463,16 @@
     .filter-item {
       margin-right: 0;
     }
-  }
+  } */
   
   
   
   
   /* cards house*/
+  .property-item-h{
+    padding-bottom: 10px;
+    text-align: center;
+  }
   .container-grid {
     display: grid;
     grid-gap: 10px;
@@ -481,6 +485,7 @@
     background-color: white;
     box-sizing: border-box;
     width: 100%;
+    padding: 0 15px;
   }
   
   .property-item {
@@ -489,19 +494,19 @@
     margin-bottom: 30px;
     transition: transform 0.3s ease-in-out;
   }
-  .property-item-container {
-    padding: 0 15px;
-    box-sizing: border-box;
-    width: 100%;
-  }
+
   .property-image-container {
     position: relative;
     overflow: hidden;
+    background-color: #0056b3;
+    height: 200px;
+    width: 100%;
   }
   .property-image {
     width: 100%;
     height: auto;
     display: block;
+    height: 100%;
     transition: transform 0.3s ease-in-out;
   }
   .property-item:hover .property-image {

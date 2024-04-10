@@ -23,7 +23,6 @@ function createHouseCard(house) {
         <div class="property-item">
             <div class="property-image-container">
                <img class="property-image" src=${house.img} alt="">
-          
             </div>
             <div class="property-info">
                <h3 class="type-label">${house.prototype}</h3>
@@ -62,36 +61,36 @@ function paintHouses() {
 paintHouses();
 
 
-houseFilter.addEventListener("click", function() {
-    // Retrieve selected filter values
-    const propertyType = document.getElementById("propertyType").value;
-    const location = document.getElementById("location").value;
-    const price = document.getElementById("price").value;
-    const sellingRenting = document.getElementById("sellingRenting").value;
+// houseFilter.addEventListener("click", function() {
+//     // Retrieve selected filter values
+//     const propertyType = document.getElementById("propertyType").value;
+//     const location = document.getElementById("location").value;
+//     const price = document.getElementById("price").value;
+//     const sellingRenting = document.getElementById("sellingRenting").value;
 
-    // Check if all filter values are set to '---select---'
-    if (propertyType === '---select---' && location === '---select---' && price === '---select---' && sellingRenting === '---select---') {
-        alert("You haven't chosen or filtered any house.");
-        return; // Exit the function without further processing
-    }
+//     // Check if all filter values are set to '---select---'
+//     if (propertyType === '---select---' && location === '---select---' && price === '---select---' && sellingRenting === '---select---') {
+//         alert("You haven't chosen or filtered any house.");
+//         return; // Exit the function without further processing
+//     }
 
-    fetchData()
-    .then((houses) => {
-        // Filter houses based on selected values
-        const filteredHouses = houses.filter(house => {
-            return (house.prototype === propertyType) ||
-                   (house.location === location) ||
-                   (house.houseFor === sellingRenting) ||
-                   (parseFloat(house.price.replace('$', '').replace(',', '')) >= parseFloat(price)) 
-        });
-        console.log('filter',filteredHouses); // Check filtered houses
+//     fetchData()
+//     .then((houses) => {
+//         // Filter houses based on selected values
+//         const filteredHouses = houses.filter(house => {
+//             return (house.prototype === propertyType) ||
+//                    (house.location === location) ||
+//                    (house.houseFor === sellingRenting) ||
+//                    (parseFloat(house.price.replace('$', '').replace(',', '')) >= parseFloat(price)) 
+//         });
+//         console.log('filter',filteredHouses); // Check filtered houses
 
-        // Paint filtered houses
-        paintHouses(filteredHouses);
-    })
-    .catch((error) => {
-        console.error("Error fetching houses:", error);
-    });
-});
+//         // Paint filtered houses
+//         paintHouses(filteredHouses);
+//     })
+//     .catch((error) => {
+//         console.error("Error fetching houses:", error);
+//     });
+// });
 
 
