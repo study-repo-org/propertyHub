@@ -120,3 +120,54 @@ const houseById = async (id) => {
 };
 
 
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  
+  let image = document.getElementById("image").value;
+  let type = document.getElementById("type").value;
+  let price = document.getElementById("price").value;
+  let description = document.getElementById("description").value;
+  let sell = document.getElementById("renting-selling").value;
+  let location = document.getElementById("location").value;
+  let squre = document.getElementById("squre").value;
+  let bed = document.getElementById("bed").value;
+  let bath = document.getElementById("bath").value;
+
+  let id = Math.floor(Math.random() * 100000);
+
+  const data = {
+    id: id, 
+    img: image,
+    prototype: type,
+    price: price,
+    description: description,
+    sell:sell,
+    location:location,
+    sqft: squre,
+    bed: bed,  
+    bath: bath,
+  };
+
+  try {
+    const response = await fetch(houseApi, {
+      method: "POST",
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to add house');
+    }
+
+    // Optionally handle success response here
+    console.log('House added successfully');
+
+  } catch (error) {
+    console.error('Error adding house:', error);
+  }
+});
+
+
