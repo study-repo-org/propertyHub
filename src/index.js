@@ -1,6 +1,6 @@
 
 // API
-const houseApi = "http://localhost:3000/houses";
+const houseApi = "https://propertyhub-mywm.onrender.com/houses";
 
 // DOM elements
 let houseContainer = document.getElementById("root")
