@@ -1,10 +1,13 @@
 
 // API
-const houseApi = "https://propertyhub-mywm.onrender.com/houses";
+const houseApi = "http://localhost:3000/houses";
 
 // DOM elements
 let houseContainer = document.getElementById("root")
-let houseFilter = document.getElementById("filter-houses")
+const form = document.getElementById("propertyHouseForm" );
+const editFormContainer = document.getElementById("editformcontainer");
+
+
 
 // fetch all houses
 const fetchData = () => {
@@ -13,16 +16,21 @@ const fetchData = () => {
       .catch((error) => {
         console.error("Error fetching houses:", error);
       });
-  };
+};
   
 
-// card div for displaying houses 
-function createHouseCard(house) {
+
+
+// creating the card for houses
+  function createHouseCard(house) {
     return `
     <div class="property-item-container">
+ 
         <div class="property-item">
             <div class="property-image-container">
-               <img class="property-image" src=${house.img} alt="">
+             <a class="btn" href="#HouseByIdmodal">
+              <img  onClick="houseById(${house.id})" class="property-image" src=${house.img} alt="">
+              </a>
             </div>
             <div class="property-info">
                <h3 class="type-label">${house.prototype}</h3>
@@ -35,33 +43,51 @@ function createHouseCard(house) {
                 <small class="detail-item"><div><i class="fa fa-bed text-primary me-2"></i></div><span>${house.bed}</span></small>
                 <small class="detail-item no-border"><div><i class="fa fa-bath text-primary me-2"></i></div><span>${house.bath}</span></small>
             </div>
-          <div class="edit-delete-div">
-            <div class="edit-delete">
-               <div class="edit"><i class="fa fa-solid fa-pen"></i></div>
-               <div class="delete" ><i class="fa fa-solid fa-trash"></i></div>
+            <div class="edit-delete-div">
+                <div class="edit-delete">
+                
+               <div class="edit">
+                  <a class="btn" href="#editHousemodal">
+                     <i onClick="editDta(${house.id})" class="fa fa-solid fa-pen"></i>
+                   </a>
+                </div>
+            
+            
+                    <div class="delete" ><i onClick="deleteHouse(${house.id})" class="fa fa-solid fa-trash"></i></div>
+                </div>
             </div>
-          </div>
         </div>
+
     </div>
     `;
 }
 
 
-// function for mapping the data
-function paintHouses() {
-    fetchData()
-    .then((houses) => {
-        let cards = houses.map(house => createHouseCard(house)).join(" ");
-        houseContainer.innerHTML = cards;
-      })
-      .catch((error) => {
-        console.error("Error fetching houses:", error);
-      });
+
+// function getting and mapping the data
+async function paintHouses() {
+  try {
+      const houses = await fetchData();
+      let cards = houses.map(house => createHouseCard(house)).join(" ");
+      houseContainer.innerHTML = cards;
+  } catch (error) {
+      console.error("Error fetching houses:", error);
+  }
 }
+
 paintHouses();
 
 
-// houseFilter.addEventListener("click", function() {
+
+
+
+
+
+
+
+
+
+
 //     // Retrieve selected filter values
 //     const propertyType = document.getElementById("propertyType").value;
 //     const location = document.getElementById("location").value;
