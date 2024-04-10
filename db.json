@@ -1,70 +1,64 @@
 {
-    "houses": [
-        {
-            "prototype": "Villa",
-            "sell": "for sale",
-            "price": "$170,8978",
-            "img": "https://media.licdn.com/dms/image/D4D12AQGPy6n4XA3eiQ/article-cover_image-shrink_720_1280/0/1687039862345?e=2147483647&v=beta&t=reyO4Xm8PwuFc3KlLdSGCxgassaMBixCPJhtcWASBaM",
-            "description": "house in the small town",
-            "location": "New York", 
-            "sqft": "1000 Sqft",
-            "bed": "3 Bed",
-            "bath": "3 Bath"   
-        },
-        {
-            "prototype": "Apartment",
-            "sell": "for sale",
-            "price": "$1,378845",
-            "img": "https://corporatestays.com/wp-content/uploads/2022/02/The-Hazel-Amenities-Lounge-2.jpg",
-            "description": "Golden Urban House For Sell",
-            "location": "Las Vigas", 
-            "sqft": "12,000 Sqft",
-            "bed": "7 Bed",
-            "bath": "9 Bath" 
-        },
-        {
-            "prototype": "Apartment",
-            "sell": "for sale",
-            "price": "$1,0000",
-            "img": "https://corporatestays.com/wp-content/uploads/2022/02/The-Hazel-Amenities-4-e1633774291295.jpg",
-            "description": "community gated houses",
-           " location": "LA", 
-            "sqft": "5000 Sqft",
-            "bed": "3 Bed",
-            "bath": "2 Bath" 
-        },
-        {
-            "prototype": "Houses",
-            "sell": "for sale",
-            "price": "$20,54345",
-            "img": "https://assets-news.housing.com/news/wp-content/uploads/2022/03/31010142/Luxury-house-design-Top-10-tips-to-add-luxury-to-your-house-FEATURE-compressed.jpg",
-            "description": "modern house For Sell",
-            "location": "New York", 
-            "sqft": "1000 Sqft",
-            "bed": "1 Bed",
-            "bath": "1 Bath" 
-        },
-        {
-            "prototype": "Condominium",
-            "sell": "for sale",
-            "price": "$80,345",
-            "img": "https://t4.ftcdn.net/jpg/01/69/69/21/360_F_169692156_L1aGrmJaHsZxF1sWQGuRKn3mR60bBqhN.jpg",
-            "description": "century  house fully furnished",
-            "location": "Washington", 
-            "sqft": "15,000 Sqft",
-            "bed": "6 Bed",
-            "bath": "4 Bath"  
-        },
-        {
-            "prototype": "House",
-            "sell": "for sale",
-            "price": "$966,4345",
-            "img": "https://foyr.com/learn/wp-content/uploads/2019/03/Villa_Mistral-Singapore.jpg",
-            "description": "modern house with a pool",
-            "location": "New York", 
-            "sqft": "1000 Sqft",
-            "bed": "3 Bed",
-            "bath": "2 Bath" 
-        }
-    ]
-  }
+  "houses": [
+    {
+      "img": "https://media.licdn.com/dms/image/D4D12AQGPy6n4XA3eiQ/article-cover_image-shrink_720_1280/0/1687039862345?e=2147483647&v=beta&t=reyO4Xm8PwuFc3KlLdSGCxgassaMBixCPJhtcWASBaM",
+      "prototype": "",
+      "price": "$170,8978",
+      "description": "house in the small town",
+      "sell": "for sale",
+      "location": "New York",
+      "sqft": "1000 Sqft",
+      "bed": "3 Bed",
+      "bath": "3 Bath",
+      "id": "1"
+    },
+    {
+      "img": "https://corporatestays.com/wp-content/uploads/2022/02/The-Hazel-Amenities-Lounge-2.jpg",
+      "prototype": "",
+      "price": "undefined",
+      "description": "undefined",
+      "sell": "undefined",
+      "location": "undefined",
+      "sqft": "undefined",
+      "bed": "undefined",
+      "bath": "undefined",
+      "id": "3"
+    },
+    {
+      "img": "https://corporatestays.com/wp-content/uploads/2022/02/The-Hazel-Amenities-4-e1633774291295.jpg",
+      "prototype": "",
+      "price": "$1,0000",
+      "description": "community gated houses",
+      "sell": "rent",
+      "location": "LA",
+      "sqft": "5000 Sqft",
+      "bed": "3 Bed",
+      "bath": "2 Bath",
+      "id": "4"
+    },
+    {
+      "img": "https://assets-news.housing.com/news/wp-content/uploads/2022/03/31010142/Luxury-house-design-Top-10-tips-to-add-luxury-to-your-house-FEATURE-compressed.jpg",
+      "prototype": "",
+      "price": "$20,54345",
+      "description": "modern house For Sell",
+      "sell": "for sale",
+      "location": "New York",
+      "sqft": "1000 Sqft",
+      "bed": "1 Bed",
+      "bath": "2 Bath",
+      "id": "5"
+    },
+    {
+      "img": "https://t4.ftcdn.net/jpg/01/69/69/21/360_F_169692156_L1aGrmJaHsZxF1sWQGuRKn3mR60bBqhN.jpg",
+      "prototype": "",
+      "price": "$80,345",
+      "description": "century  house fully furnished",
+      "sell": "for sale",
+      "location": "Washington",
+      "sqft": "15,000 Sqft",
+      "bed": "6 Bed",
+      "bath": "4 Bath",
+      "id": "6"
+    }
+  ]
+}
