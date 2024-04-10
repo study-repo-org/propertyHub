@@ -171,3 +171,122 @@ form.addEventListener("submit", async (e) => {
 });
 
 
+
+// editing a house
+const editDta = async (id) => {
+  let createEditForm = document.createElement("form");
+
+  const fetchDataById = async () => {
+    try {
+      const res = await fetch(`${houseApi}/${id}`);
+      return res.json();
+    } catch (error) {
+      console.error("Error fetching house data:", error);
+    }
+  };
+
+  try {
+    const house = await fetchDataById();
+
+    createEditForm.innerHTML = `
+    <form id="propertyHouseForm">
+    <label for="">Image</label>
+    <input type="text" id="image-edit" placeholder="image" class="form-field" value="${house.img}">
+    <P id="imageError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Property Type</label>
+    <select id="type-edit" class="form-field">
+        <option value="">---select---</option>
+        <option value="apartment">Apartment</option>
+        <option value="house">House</option>
+        <option value="villa">Villa</option>
+        <option value="building">Building</option>
+    </select>
+    <P id="typeError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Price</label>
+    <input type="text" id="price-edit" placeholder="Price" class="form-field" value="${house.price}">
+    <P id="priceError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Description</label>
+    <input type="text" id="description-edit" placeholder="Description" class="form-field" value="${house.description}">
+    <P id="descriptionError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Location</label>
+    <input type="text" id="location-edit" placeholder="Location" class="form-field"value="${house.location}">
+    <P id="locationError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Renting / Selling</label>
+    <input type="text" id="renting-selling-edit" placeholder="selling / renting" class="form-field" value="${house.sell}">
+    <P id="sellingRentingError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Square Foot</label>
+    <input type="text" id="squre-edit" placeholder="Square Foot" class="form-field" value="${house.sqft}">
+    <P id="squreError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Bed</label>
+    <input type="text" id="bed-edit" placeholder="bed" class="form-field" value="${house.bed}">
+    <P id="bedError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+
+    <label for="">Bath</label>
+    <input type="text" id="bath-edit" placeholder="Bath" class="form-field" value="${house.bath}">
+    <P id="bathError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
+    <button type="submit" class="form-button">Send Message</button>
+  </form>
+     `;
+
+    editFormContainer.appendChild(createEditForm);
+
+    createEditForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      let image = document.getElementById("image-edit").value;
+      let type = document.getElementById("type-edit").value;
+      let price = document.getElementById("price-edit").value;
+      let description = document.getElementById("description-edit").value;
+      let sell = document.getElementById("renting-selling-edit").value;
+      let location = document.getElementById("location-edit").value;
+      let squre = document.getElementById("squre-edit").value;
+      let bed = document.getElementById("bed-edit").value;
+      let bath = document.getElementById("bath-edit").value;
+  
+      
+      const newData = {
+        img: image,
+        prototype: type,
+        price: price,
+        description: description,
+        sell:sell,
+        location:location,
+        sqft: squre,
+        bed: bed,  
+        bath: bath,
+        };
+
+
+      try {
+        const response = await fetch(`${houseApi}/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newData),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to update house data');
+        }
+
+        // Optionally handle success response here
+        console.log('House data updated successfully');
+
+      } catch (error) {
+        console.error('Error updating house data:', error);
+      }
+    });
+  } catch (error) {
+    console.error("Error populating edit form:", error);
+  }
+};
+
+
