@@ -80,43 +80,43 @@ paintHouses();
 
 
 
+// getting houses by their ids
+const houseById = async (id) => {
+  const houseElement = document.getElementById("house-details");
 
+  const fetchDataById = async () => {
+    try {
+      const res = await fetch(`${houseApi}/${id}`);
+      return res.json();
+    } catch (error) {
+      console.error("Error fetching house data:", error);
+    }
+  };
 
+  try {
+    const house = await fetchDataById();
 
+    // Display the fetched house data
+    houseElement.innerHTML = `
+      <h4 style="text-align: center">House Id : ${house.id}</h4> 
+      <img style="width:500px; hight:500px; text-align: center;" src=${house.img} />
+      <div class="property-details">
+        <p style="font-size: 15px;" class="tagid detail-item" >Name: ${house.name}</p>
+        <p style="font-size: 15px;" class="id detail-item">Price: ${house.price}</p>
+        <p style="font-size: 15px;" class="id detail-item">Location: ${house.location}</p>
+      </div>
+      <p style="font-size: 15px; text-align: center; padding-top: 20px;padding-bottom: 20px" " class="description-id">Description: ${house.description}</p>
 
-
-
-
-
-//     // Retrieve selected filter values
-//     const propertyType = document.getElementById("propertyType").value;
-//     const location = document.getElementById("location").value;
-//     const price = document.getElementById("price").value;
-//     const sellingRenting = document.getElementById("sellingRenting").value;
-
-//     // Check if all filter values are set to '---select---'
-//     if (propertyType === '---select---' && location === '---select---' && price === '---select---' && sellingRenting === '---select---') {
-//         alert("You haven't chosen or filtered any house.");
-//         return; // Exit the function without further processing
-//     }
-
-//     fetchData()
-//     .then((houses) => {
-//         // Filter houses based on selected values
-//         const filteredHouses = houses.filter(house => {
-//             return (house.prototype === propertyType) ||
-//                    (house.location === location) ||
-//                    (house.houseFor === sellingRenting) ||
-//                    (parseFloat(house.price.replace('$', '').replace(',', '')) >= parseFloat(price)) 
-//         });
-//         console.log('filter',filteredHouses); // Check filtered houses
-
-//         // Paint filtered houses
-//         paintHouses(filteredHouses);
-//     })
-//     .catch((error) => {
-//         console.error("Error fetching houses:", error);
-//     });
-// });
+      <div class="property-details">
+        <small class="detail-item"><div><i class="fa fa-ruler-combined text-primary me-2"></i></div><span>${house.sqft}</span></small>
+        <small class="detail-item"><div><i class="fa fa-bed text-primary me-2"></i></div><span>${house.bed}</span></small>
+        <small class="detail-item no-border"><div><i class="fa fa-bath text-primary me-2"></i></div><span>${house.bath}</span></small>
+      </div>
+      <!-- Add other house details here -->
+    `;
+  } catch (error) {
+    console.error("Error fetching house data:", error);
+  }
+};
 
 
