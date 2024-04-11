@@ -200,7 +200,7 @@ form.addEventListener("submit", async (e) => {
     houseMessageDisplay.textContent = "House created Successfully";
     form.remove(); 
   
-
+    paintHouses();
    
   } catch (error) {
     console.error('Error adding house:', error);
