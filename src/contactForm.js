@@ -1,5 +1,5 @@
 
-const contactUrl = "http://localhost:3000/contact";
+const contactUrl = "https://propertyhub-mywm.onrender.com/contact";
 
 const contactForm = document.getElementById("submitForm" );
 
