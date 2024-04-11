@@ -31,9 +31,10 @@ const fetchData = () => {
              <a class="btn" href="#HouseByIdmodal">
               <img  onClick="houseById(${house.id})" class="property-image" src=${house.img} alt="">
               </a>
+              <div class="status-label sell">${house.sell}</div>
+           
             </div>
             <div class="property-info">
-               <h3 class="type-label">${house.prototype}</h3>
                 <h5 class="price">${house.price}</h5>
                 <a class="title" href="#">${house.description}</a>
                 <p class="location"><span class="icon-location">${house.location}</span></p>
