@@ -63,7 +63,6 @@ const fetchData = () => {
 }
 
 
-
 // function getting and mapping the data
 async function paintHouses() {
   try {
@@ -118,6 +117,7 @@ const houseById = async (id) => {
     console.error("Error fetching house data:", error);
   }
 };
+
 
 
 
@@ -207,6 +207,7 @@ form.addEventListener("submit", async (e) => {
   }
   
 });
+
 
 
 
@@ -326,6 +327,7 @@ const editDta = async (id) => {
 
 
 
+
 // deleting houses
 const deleteHouse = (id) => {
   fetch(`${houseApi}/${id}`, {
@@ -341,6 +343,11 @@ const deleteHouse = (id) => {
 
 
 
+
+document.addEventListener("DOMContentLoaded", () => { 
+  paintHouses();
+
+});
 
 
 
