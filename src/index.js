@@ -343,14 +343,7 @@ const deleteHouse = (id) => {
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
-    }
-    // Remove the HTML element corresponding to the deleted house
-    const houseElement = document.getElementById(`house-${id}`);
-    if (houseElement) {
-      houseElement.remove();
-    } else {
-      console.error(`Failed to find HTML element for house with ID ${id}`);
-    }
+    }   
   })
   .catch(error => {
     console.error('There was a problem with your fetch operation:', error);
