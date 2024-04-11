@@ -316,6 +316,9 @@ const editDta = async (id) => {
         }
         messageDisplay.textContent = "House Updated Successfully";
         createEditForm.remove();
+       
+          paintHouses()
+    
       } catch (error) {
         console.error('Error updating house data:', error);
       }
