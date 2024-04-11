@@ -611,7 +611,7 @@
     justify-content:space-around;
   }
   
-  .edit{
+  .edit a{
     color:green ;
     cursor: pointer;
   }
