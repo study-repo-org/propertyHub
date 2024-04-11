@@ -121,8 +121,10 @@ const houseById = async (id) => {
 
 
 
+// house creating house
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const houseMessageDisplay = document.getElementById("displayMesageHouse");
 
   let image = document.getElementById("image").value.trim();
   let type = document.getElementById("type").value.trim();
@@ -190,35 +192,28 @@ form.addEventListener("submit", async (e) => {
       },
       body: JSON.stringify(data),
     });
-
+  
     if (!response.ok) {
       throw new Error('Failed to add house');
     }
+  
+    houseMessageDisplay.textContent = "House created Successfully";
+    form.remove(); 
+  
 
-    // Reset form fields to empty
-    document.getElementById("image").value = "";
-    document.getElementById("type").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("rentingselling").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("squre").value = "";
-    document.getElementById("bed").value = "";
-    document.getElementById("bath").value = "";
-
-    console.log("House added successfully");
-
+   
   } catch (error) {
     console.error('Error adding house:', error);
   }
+  
 });
-
 
 
 
 // editing a house
 const editDta = async (id) => {
   let createEditForm = document.createElement("form");
+  const messageDisplay = document.getElementById("displayMesage");
 
   const fetchDataById = async () => {
     try {
@@ -275,7 +270,7 @@ const editDta = async (id) => {
     <label for="">Bath</label>
     <input type="text" id="bath-edit" placeholder="Bath" class="form-field" value="${house.bath}">
     <P id="bathError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
-    <button type="submit" class="form-button">Send Message</button>
+    <button type="submit" class="form-button">Edit</button>
   </form>
      `;
 
@@ -307,7 +302,6 @@ const editDta = async (id) => {
         bath: bath,
         };
 
-
       try {
         const response = await fetch(`${houseApi}/${id}`, {
           method: "PUT",
@@ -316,14 +310,11 @@ const editDta = async (id) => {
           },
           body: JSON.stringify(newData),
         });
-
         if (!response.ok) {
           throw new Error('Failed to update house data');
         }
-
-        // Optionally handle success response here
-        console.log('House data updated successfully');
-
+        messageDisplay.textContent = "House Updated Successfully";
+        createEditForm.remove();
       } catch (error) {
         console.error('Error updating house data:', error);
       }
