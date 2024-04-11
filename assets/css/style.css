@@ -520,6 +520,7 @@
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     color: #fff;
+    text-transform: capitalize;
   }
   
   .status-label {
