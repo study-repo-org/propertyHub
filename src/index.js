@@ -123,16 +123,49 @@ const houseById = async (id) => {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
-  let image = document.getElementById("image").value;
-  let type = document.getElementById("type").value;
-  let price = document.getElementById("price").value;
-  let description = document.getElementById("description").value;
-  let sell = document.getElementById("renting-selling").value;
-  let location = document.getElementById("location").value;
-  let squre = document.getElementById("squre").value;
-  let bed = document.getElementById("bed").value;
-  let bath = document.getElementById("bath").value;
+
+  let image = document.getElementById("image").value.trim();
+  let type = document.getElementById("type").value.trim();
+  let price = document.getElementById("price").value.trim();
+  let description = document.getElementById("description").value.trim();
+  let sell = document.getElementById("rentingselling").value.trim();
+  let location = document.getElementById("location").value.trim();
+  let squre = document.getElementById("squre").value.trim();
+  let bed = document.getElementById("bed").value.trim();
+  let bath = document.getElementById("bath").value.trim();
+
+  let imageErrorMessage = document.getElementById("imageError");
+  let typeErrorMessage = document.getElementById("typeError");
+  let priceErrorMessage = document.getElementById("priceError"); 
+  let descriptionErrorMessage = document.getElementById("descriptionError"); 
+  let sellErrorMessage = document.getElementById("sellingRentingError"); 
+  let locationErrorMessage = document.getElementById("locationError"); 
+  let squreErrorMessage = document.getElementById("squreError"); 
+  let bedErrorMessage = document.getElementById("bedError"); 
+  let bathErrorMessage = document.getElementById("bathError"); 
+
+  imageErrorMessage.innerText = "";
+  typeErrorMessage.innerText = "";
+  priceErrorMessage.innerText = "";
+  descriptionErrorMessage.innerText = "";
+  sellErrorMessage.innerText = "";
+  locationErrorMessage.innerText = "";
+  squreErrorMessage.innerText = "";
+  bedErrorMessage.innerText = "";
+  bathErrorMessage.innerText = "";
+
+  if (image === "" || type === "" || price === "" || description === "" || sell === "" || location === "" || squre === "" || bed === "" || bath === "") {
+    imageErrorMessage.innerText = "Image is required";
+    typeErrorMessage.innerText = "Property type is required";
+    priceErrorMessage.innerText = "Price is required";    
+    descriptionErrorMessage.innerText = "Description is required";   
+    sellErrorMessage.innerText = "Selling | Renting is required";  
+    locationErrorMessage.innerText = "Location is required";    
+    squreErrorMessage.innerText = "Square footage is required";   
+    bathErrorMessage.innerText = "Bath is required";     
+    bedErrorMessage.innerText = "Bed is required";    
+    return; // Exit function if any field is empty
+  }
 
   let id = Math.floor(Math.random() * 100000);
 
@@ -142,8 +175,8 @@ form.addEventListener("submit", async (e) => {
     prototype: type,
     price: price,
     description: description,
-    sell:sell,
-    location:location,
+    sell: sell,
+    location: location,
     sqft: squre,
     bed: bed,  
     bath: bath,
@@ -162,13 +195,24 @@ form.addEventListener("submit", async (e) => {
       throw new Error('Failed to add house');
     }
 
-    // Optionally handle success response here
-    console.log('House added successfully');
+    // Reset form fields to empty
+    document.getElementById("image").value = "";
+    document.getElementById("type").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("rentingselling").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("squre").value = "";
+    document.getElementById("bed").value = "";
+    document.getElementById("bath").value = "";
+
+    console.log("House added successfully");
 
   } catch (error) {
     console.error('Error adding house:', error);
   }
 });
+
 
 
 
@@ -300,8 +344,13 @@ const deleteHouse = (id) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    // Optionally handle success response here
-    console.log("House deleted successfully");
+    // Remove the HTML element corresponding to the deleted house
+    const houseElement = document.getElementById(`house-${id}`);
+    if (houseElement) {
+      houseElement.remove();
+    } else {
+      console.error(`Failed to find HTML element for house with ID ${id}`);
+    }
   })
   .catch(error => {
     console.error('There was a problem with your fetch operation:', error);
