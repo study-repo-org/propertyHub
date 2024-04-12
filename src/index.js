@@ -232,7 +232,7 @@ const editDta = async (id) => {
     createEditForm.innerHTML = `
     <form id="propertyHouseForm">
     <label for="">Image</label>
-    <input type="text" id="image-edit" placeholder="image" class="form-field" value="${house.img}">
+    <input type="text" id="image-edit" placeholder="image Image | Insert The Image URL" class="form-field" value="${house.img}">
     <P id="imageError" style="color: red; margin-top: 0; margin-bottom: 10px;"></P>
 
     <label for="">Property Type</label>
