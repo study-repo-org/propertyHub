@@ -556,6 +556,7 @@
     color: #0e2e50;
     font-weight: bolder;
     font-size: 20px;
+    text-transform: capitalize;
   }
   
   .title a:hover {
